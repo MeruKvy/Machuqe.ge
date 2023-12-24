@@ -7,9 +7,11 @@ export default createGlobalStyle<{ theme: any }>`
     box-sizing: border-box;
 } 
 
-${(props) => css`
-  background-color: ${props.theme.colors["primary"]};
-`}
+body {
+  ${(props) => css`
+    background-color: ${props.theme.colors["secondary"]};
+  `}
+}
 
 `;
 
