@@ -15,7 +15,17 @@ export const Form = () => {
   const { toggleTheme } = useContext(ThemeContext);
   return (
     <FlexContainer>
-     
+      <Sform>
+        <MachuqeMainLarge />
+        <Space direction="vertical" size={12} align="center" >
+          <Input size="large" placeholder="username" />
+          <Input size="large" placeholder="email" />
+          <Input size="large" placeholder="password" />
+          <Button type="primary">Join For Free</Button>
+          <Slink to="/" >Login</Slink> 
+          <Switch onChange={() => toggleTheme()} checkedChildren="Light" unCheckedChildren="Dark" />
+        </Space>
+      </Sform>
     </FlexContainer>
   );
 };
