@@ -1,4 +1,5 @@
 import { PropsWithChildren, useState, useCallback, useEffect } from "react";
+import { ConfigProvider } from "antd";
 import { ThemeContext, ThemeModes_Enum } from "./ThemeContext";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
@@ -12,19 +13,24 @@ export function ThemeProvider({ children }: PropsWithChildren) {
 
   const colors = {
     [ThemeModes_Enum.LIGHT]: {
-      primary: "#514444",
+      primary: "#413838",
       secondary: "#E9E9E9",
-      border: "#fff"
-      
-
+      textBase: "#413838",
+      light: "#8C8C8C",
     },
     [ThemeModes_Enum.DARK]: {
-      primary: "#8C8C8C",
+      primary: "#5C8374",
       secondary: "#222831",
-      border: "#858181"
-
+      textBase: "#5C8374",
+      light: "#B6D0C7",
     },
   };
+
+  const antdTheme = {
+    colorPrimary: colors[themeMode].primary,
+    colorTextBase: colors[themeMode].textBase
+  };
+
 
   const toggleTheme = useCallback(() => {
     if (themeMode === ThemeModes_Enum.LIGHT) {
@@ -44,12 +50,16 @@ export function ThemeProvider({ children }: PropsWithChildren) {
 
   return (
     <ThemeContext.Provider value={{ themeMode, setThemeMode, toggleTheme }}>
+      <ConfigProvider theme={{
+          token: antdTheme
+        }}>
       <StyledThemeProvider
         theme={{ colors: colors[themeMode], mode: themeMode }}
       >
         <GlobalCss />
         {children}
       </StyledThemeProvider>
+      </ConfigProvider>
     </ThemeContext.Provider>
   );
 }
