@@ -1,0 +1,1 @@
+export  {MachuqeMainLarge as default} from "./MachuqeMainLarge";
