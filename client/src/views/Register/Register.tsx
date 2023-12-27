@@ -1,5 +1,4 @@
-
-import { Form } from "@src/components/Form";
+import Form from "@src/components/Form"
 import { FormType_Enum } from "@src/components/Form/Form";
 
 export function Register() {

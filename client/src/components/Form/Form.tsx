@@ -24,13 +24,14 @@ export const Form = ({
 }) => {
   const { toggleTheme, themeMode } = useContext(ThemeContext);
   const themeIsLight = themeMode === ThemeModes_Enum.LIGHT;
+  const isRegisterType = type === FormType_Enum.REGISTER 
 
   return (
     <FlexContainer>
       <Sform>
         <MachuqeMainLarge />
         <Space direction="vertical" size={12} align="center">
-          {type === FormType_Enum.REGISTER ? (
+          {isRegisterType ? (
             <Input size="large" placeholder="username" />
           ) : (
             ""
@@ -38,12 +39,12 @@ export const Form = ({
           <Input size="large" placeholder="email" />
           <Input size="large" placeholder="password" />
           <Button onSubmit={() => handleSubmit()} type="primary">
-            Join For Free
+           {isRegisterType ? "Join For Free" : "Login" }
           </Button>
-          {type === FormType_Enum.REGISTER ? (
+          {isRegisterType ? (
             <Slink to="/auth/login">Login</Slink>
           ) : (
-            <Slink to="/auth/register">Register</Slink>
+            
           )}
           <Switch
             defaultChecked={themeIsLight}
