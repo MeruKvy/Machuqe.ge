@@ -44,7 +44,7 @@ export const Form = ({
           {isRegisterType ? (
             <Slink to="/auth/login">Login</Slink>
           ) : (
-            
+            <Slink to="/auth/register">Register</Slink>
           )}
           <Switch
             defaultChecked={themeIsLight}
