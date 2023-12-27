@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/auth/register" element={<Register />} />
-          <Route path="/auth/Login" element={<Login/>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login/>} />
         </Route>
       </Routes>
     </Suspense>
