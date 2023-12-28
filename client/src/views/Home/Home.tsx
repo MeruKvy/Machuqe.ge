@@ -1,29 +1,22 @@
-import { useEffect, useContext } from "react";
-import { axiosInstance } from "@src/utils/publicAxios";
+import {  useContext } from "react";
+import { Switch } from "antd";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { SHome } from "./Home.styled";
-import { ThemeContext } from "@src/providers/ThemeProvider/ThemeContext";
+import { ThemeContext, ThemeModes_Enum } from "@src/providers/ThemeProvider/ThemeContext";
 
 export function Home() {
-  const { count, setCount } = useGlobalProvider();
-  const { toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme, themeMode } = useContext(ThemeContext);
 
-  async function getPosts() {
-    const posts = await axiosInstance.get("/posts");
-  }
-
-  useEffect(() => {
-    getPosts();
-  }, []);
+  const themeIsLight = themeMode === ThemeModes_Enum.LIGHT;
 
   return (
     <SHome>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <div className="w-6 h-6"></div>
-      <button onClick={() => toggleTheme()}>შეცვალე theme</button>
-      <button onClick={() => setCount(count + 1)}>increase</button>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count - 1)}>decrease</button>
+      <Switch
+        defaultChecked={themeIsLight}
+        onChange={() => toggleTheme()}
+        checkedChildren="Light"
+        unCheckedChildren="Dark"
+      />
     </SHome>
   );
 }

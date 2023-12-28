@@ -1,6 +1,11 @@
 import axios, { AxiosError } from "axios";
-import { userObjProps } from "@src/components/Form/Form";
 import { baseAxios } from "./publicAxios";
+
+export interface userObjProps {
+  email: string;
+  password: string;
+  username?: string;
+}
 
 export const registerUser = async (userData: userObjProps) => {
   try {
