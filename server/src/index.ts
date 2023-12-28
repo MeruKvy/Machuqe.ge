@@ -6,6 +6,7 @@ import compression from "compression";
 import mongoose from "mongoose";
 import router from "./router";
 import corsMiddleware from "./middlewares/corsMiddleware";
+const dotenv = require('dotenv').config();
 
 const app = express();
 
@@ -17,15 +18,16 @@ app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
-server.listen(8080, () => {
-  console.log("server running on http://localhost:8080/");
+const PORT = process.env.PORT || 8080
+
+server.listen(PORT, () => {
+  console.log("server running on port " + PORT);
 });
 
-const MONGO_URL =
-  "mongodb+srv://Merkviladze:G7jsk7v9o8nbmhfo@cluster0.zjslaev.mongodb.net/machuqe?retryWrites=true&w=majority";
+
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
 
 app.use("/", router());
