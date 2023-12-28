@@ -32,9 +32,9 @@ export const Form = ({
   const themeIsLight = themeMode === ThemeModes_Enum.LIGHT;
   const isRegisterType = type === FormType_Enum.REGISTER;
   const [userData, setUserData] = useState<userObjProps>({
-    email: "",
-    password: "",
-    username: "",
+    "email": "",
+    "password": "",
+    "username": "",
   });
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -53,6 +53,7 @@ export const Form = ({
         <Space direction="vertical" size={12} align="center">
           {isRegisterType ? (
             <Input
+
               size="large"
               placeholder="username"
               value={userData.username}
@@ -63,6 +64,7 @@ export const Form = ({
             ""
           )}
           <Input
+            type="email"
             size="large"
             placeholder="email"
             value={userData.email}
@@ -70,6 +72,7 @@ export const Form = ({
             onChange={handleInputChange}
           />
           <Input
+          type="password"
             size="large"
             placeholder="password"
             value={userData.password}
@@ -77,7 +80,7 @@ export const Form = ({
             onChange={handleInputChange}
           />
           <Button
-            onSubmit={() => {
+            onClick={() => {
               handleSubmit(userData);
             }}
             type="primary"
