@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { baseAxios } from "./publicAxios";
+import { FormInstance } from 'antd/lib/form';
 
 export interface userObjProps {
   email: string;
@@ -27,6 +28,56 @@ export const registerUser = async (userData: userObjProps) => {
         axiosError.response.status
       );
       console.error("Response data:", axiosError.response.data);
+    } else if (axiosError.request) {
+      console.error("No response received from the server");
+    } else {
+      console.error("Error setting up the request");
+    }
+  }
+};
+
+export const logInUser = async (userData: userObjProps, form: FormInstance) => {
+  try {
+    const response = await baseAxios.post(
+      "/auth/login",
+      JSON.stringify(userData),
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    );
+
+    if (response.data && response.data.email) {
+      console.log("Login successful:", response.data);
+
+      // Redirect to the homepage or perform other actions
+      window.location.href = "/"; // Redirect to the homepage
+    } else {
+      console.error("Unexpected response format");
+    }
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response) {
+      const status = axiosError.response.status;
+
+      switch (status) {
+        case 400:
+          // Display error message for invalid email or password
+          form.setFields([
+            { name: 'email', errors: ['Invalid email or password'] },
+            { name: 'password', errors: ['Invalid email or password'] },
+          ]);
+          break;
+        case 403:
+          // Display error message for incorrect password
+          form.setFields([
+            { name: 'password', errors: ['Incorrect password'] },
+          ]);
+          break;
+        default:
+          console.error("Login failed with status code:", status);
+      }
     } else if (axiosError.request) {
       console.error("No response received from the server");
     } else {

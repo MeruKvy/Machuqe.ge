@@ -13,7 +13,7 @@ body {
   ${(props) => css`
     background-color: ${props.theme.colors["secondary"]};
   `}
-}
+  }
 
 `;
 
