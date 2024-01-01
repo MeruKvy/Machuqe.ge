@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import  { AxiosError } from "axios";
 import { baseAxios } from "./publicAxios";
 import { FormInstance } from 'antd/lib/form';
 
@@ -49,9 +49,7 @@ export const logInUser = async (userData: userObjProps, form: FormInstance) => {
 
     if (response.data && response.data.email) {
       console.log("Login successful:", response.data);
-
-      // Redirect to the homepage or perform other actions
-      window.location.href = "/"; // Redirect to the homepage
+      window.location.href = "/"; 
     } else {
       console.error("Unexpected response format");
     }
@@ -63,14 +61,12 @@ export const logInUser = async (userData: userObjProps, form: FormInstance) => {
 
       switch (status) {
         case 400:
-          // Display error message for invalid email or password
           form.setFields([
             { name: 'email', errors: ['Invalid email or password'] },
             { name: 'password', errors: ['Invalid email or password'] },
           ]);
           break;
         case 403:
-          // Display error message for incorrect password
           form.setFields([
             { name: 'password', errors: ['Incorrect password'] },
           ]);
