@@ -17,12 +17,14 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       secondary: "#E9E9E9",
       textBase: "#413838",
       light: "#8C8C8C",
+      navbar: "#D0CFCF"
     },
     [ThemeModes_Enum.DARK]: {
       primary: "#5C8374",
       secondary: "#222831",
-      textBase: "#5C8374",
+      textBase: "#3E5C51",
       light: "#B6D0C7",
+      navbar: "#1B2129"
     },
   };
 

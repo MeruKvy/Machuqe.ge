@@ -1,15 +1,20 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Snavbar } from "./Navbar.styled";
-import { FaUserCog } from "react-icons/fa";
-import { FaUserFriends } from "react-icons/fa";
-import { MdFeedback } from "react-icons/md";
-import { FaDonate } from "react-icons/fa";
+import { SsectionContainer } from "./Navbar.styled";
 import { Switch } from "antd";
+import { SlogoFrame } from "./Navbar.styled";
+import {
+  SfaUserCog,
+  SfaUserFriends,
+  SmdFeedback,
+  SfaDonate,
+} from "./Navbar.styled";
+import { SoptionName } from "./Navbar.styled";
 import {
   ThemeContext,
   ThemeModes_Enum,
 } from "@src/providers/ThemeProvider/ThemeContext";
-
+import HamburgerMenu from "../../assets/Logos/MachuqeHamburgerMenu";
 
 export function Navbar() {
   const { toggleTheme, themeMode } = useContext(ThemeContext);
@@ -17,10 +22,26 @@ export function Navbar() {
 
   return (
     <Snavbar>
-      <FaUserCog size={50} />
-      <FaUserFriends size={50} />
-      <MdFeedback size={50} />
-      <FaDonate size={50} />
+      <SlogoFrame>
+        <HamburgerMenu />
+      </SlogoFrame>
+      <SsectionContainer>
+        <SfaUserCog />
+        <SoptionName>User Settings</SoptionName>
+      </SsectionContainer>
+      <SsectionContainer>
+        <SfaUserFriends />
+        <SoptionName>Friends</SoptionName>
+      </SsectionContainer>
+      <SsectionContainer>
+        <SmdFeedback />
+        <SoptionName>Send Feedback</SoptionName>
+      </SsectionContainer>
+      <SsectionContainer>
+        <SfaDonate />
+        <SoptionName>donate to coder</SoptionName>
+      </SsectionContainer>
+
       <Switch
         defaultChecked={themeIsLight}
         onChange={() => toggleTheme()}

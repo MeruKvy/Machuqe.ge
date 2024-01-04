@@ -4,7 +4,7 @@ import { PublicLayout } from "@src/layouts/PublicLayout";
 
 const Home = lazy(() => import("@src/views/Home"));
 const Register = lazy(() => import("@src/views/Register"));
-const Login = lazy(() => import("@src/views/Login"))
+const Login = lazy(() => import("@src/views/Login"));
 
 function App() {
   return (
@@ -12,9 +12,9 @@ function App() {
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login/>} />
         </Route>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Suspense>
   );
