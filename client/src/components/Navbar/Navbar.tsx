@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
-import { Snavbar } from "./Navbar.styled";
-import { SsectionContainer } from "./Navbar.styled";
+import {
+  Snavbar,
+  SsectionContainer,
+  SlogoFrame,
+  SiconWrapper,
+} from "./Navbar.styled";
 import { Switch } from "antd";
-import { SlogoFrame } from "./Navbar.styled";
 import {
   SfaUserCog,
   SfaUserFriends,
@@ -26,19 +29,27 @@ export function Navbar() {
         <HamburgerMenu />
       </SlogoFrame>
       <SsectionContainer>
-        <SfaUserCog />
+        <SiconWrapper>
+          <SfaUserCog />
+        </SiconWrapper>
         <SoptionName>User Settings</SoptionName>
       </SsectionContainer>
       <SsectionContainer>
-        <SfaUserFriends />
+        <SiconWrapper>
+          <SfaUserFriends />
+        </SiconWrapper>
         <SoptionName>Friends</SoptionName>
       </SsectionContainer>
       <SsectionContainer>
-        <SmdFeedback />
+        <SiconWrapper>
+          <SmdFeedback />
+        </SiconWrapper>
         <SoptionName>Send Feedback</SoptionName>
       </SsectionContainer>
       <SsectionContainer>
-        <SfaDonate />
+        <SiconWrapper>
+          <SfaDonate />
+        </SiconWrapper>
         <SoptionName>donate to coder</SoptionName>
       </SsectionContainer>
 
